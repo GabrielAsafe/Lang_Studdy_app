@@ -1,0 +1,21 @@
+{
+  "app": {
+    "name": "Reading app",
+    "version": "1.0.0",
+    "description": "Documenta\u00e7\u00e3o de configura\u00e7\u00e3o da aplica\u00e7\u00e3o"
+  },
+  "configurations": [
+    {
+      "key": "TARGET_LANGUAGE",
+      "required": true,
+      "default": "pt_BR",
+      "description": "Idioma usado pelo Phunspell"
+    },
+    {
+      "key": "BASE_LANGUAGE",
+      "required": true,
+      "default": "pt_BR",
+      "description": "Idioma base do sistema"
+    }
+  ]
+}

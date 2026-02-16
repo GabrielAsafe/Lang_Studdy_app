@@ -1,0 +1,5 @@
+# 1. Build da imagem
+docker build -t reading_app .
+
+# 2. Rodar container
+docker run -p 5000:5000 reading_app

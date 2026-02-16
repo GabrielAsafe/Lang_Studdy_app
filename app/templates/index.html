@@ -1,0 +1,97 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Poema Interativo</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>  
+<div class="bd">
+    <div class="left">
+        <div id="toggle_left">&#9664;</div>
+
+        <h2>Configurações</h2>
+        <form id="configForm">
+            <label for="target_lang_select">Estou a estudar:</label>
+            <select id="target_lang_select">
+                <option value="pt_BR">Português</option>
+                <option value="en_US">Inglês</option>
+                <option value="de_DE">Alemão</option>
+            </select>
+
+            <label for="base_lang_select">Meu idioma nativo é:</label>
+            <select id="base_lang_select">
+                <option value="pt_BR">Português</option>
+                <option value="en_US">Inglês</option>
+                <option value="de_DE">Alemão</option>
+            </select>
+            
+            <input type="submit" value="Mudar definições">
+        </form>
+
+
+
+        <label for="fileInput">seleciona um arquivo para leitura</label>
+        <input type="file" id="fileInput" />
+
+    </div>
+
+    <div class="middle">
+        <p><span class="palavra">Take</span> <span class="palavra">this</span> <span class="palavra">kiss</span> <span class="palavra">upon</span> <span class="palavra">the</span> <span class="palavra">brow</span> <span class="palavra">!</span><br>
+<span class="palavra">And</span> <span class="palavra">,</span> <span class="palavra">in</span> <span class="palavra">parting</span> <span class="palavra">from</span> <span class="palavra">you</span> <span class="palavra">now</span> <span class="palavra">,</span><br>
+<span class="palavra">Thus</span> <span class="palavra">much</span> <span class="palavra">let</span> <span class="palavra">me</span> <span class="palavra">avow</span><br>
+<span class="palavra">You</span> <span class="palavra">are</span> <span class="palavra">not</span> <span class="palavra">wrong</span> <span class="palavra">,</span> <span class="palavra">who</span> <span class="palavra">deem</span><br>
+<span class="palavra">That</span> <span class="palavra">my</span> <span class="palavra">days</span> <span class="palavra">have</span> <span class="palavra">been</span> <span class="palavra">a</span> <span class="palavra">dream</span> <span class="palavra">;</span><br>
+<span class="palavra">Yet</span> <span class="palavra">if</span> <span class="palavra">hope</span> <span class="palavra">has</span> <span class="palavra">flown</span> <span class="palavra">away</span><br>
+<span class="palavra">In</span> <span class="palavra">a</span> <span class="palavra">night</span> <span class="palavra">,</span> <span class="palavra">or</span> <span class="palavra">in</span> <span class="palavra">a</span> <span class="palavra">day</span> <span class="palavra">,</span><br>
+<span class="palavra">In</span> <span class="palavra">a</span> <span class="palavra">vision</span> <span class="palavra">,</span> <span class="palavra">or</span> <span class="palavra">in</span> <span class="palavra">none</span> <span class="palavra">,</span><br>
+<span class="palavra">Is</span> <span class="palavra">it</span> <span class="palavra">therefore</span> <span class="palavra">the</span> <span class="palavra">less</span> <span class="palavra">gone</span> <span class="palavra">?</span><br>
+<span class="palavra">All</span> <span class="palavra">that</span> <span class="palavra">we</span> <span class="palavra">see</span> <span class="palavra">or</span> <span class="palavra">seem</span><br>
+<span class="palavra">Is</span> <span class="palavra">but</span> <span class="palavra">a</span> <span class="palavra">dream</span> <span class="palavra">within</span> <span class="palavra">a</span> <span class="palavra">dream</span> <span class="palavra">.</span></p>
+<p><span class="palavra">I</span> <span class="palavra">stand</span> <span class="palavra">amid</span> <span class="palavra">the</span> <span class="palavra">roar</span><br>
+<span class="palavra">Of</span> <span class="palavra">a</span> <span class="palavra">surf</span> <span class="palavra">tormented</span> <span class="palavra">shore</span> <span class="palavra">,</span><br>
+<span class="palavra">And</span> <span class="palavra">I</span> <span class="palavra">hold</span> <span class="palavra">within</span> <span class="palavra">my</span> <span class="palavra">hand</span><br>
+<span class="palavra">Grains</span> <span class="palavra">of</span> <span class="palavra">the</span> <span class="palavra">golden</span> <span class="palavra">sand</span><br>
+<span class="palavra">How</span> <span class="palavra">few</span> <span class="palavra">!</span> <span class="palavra">yet</span> <span class="palavra">how</span> <span class="palavra">they</span> <span class="palavra">creep</span><br>
+<span class="palavra">Through</span> <span class="palavra">my</span> <span class="palavra">fingers</span> <span class="palavra">to</span> <span class="palavra">the</span> <span class="palavra">deep</span> <span class="palavra">,</span><br>
+<span class="palavra">While</span> <span class="palavra">I</span> <span class="palavra">weep</span> <span class="palavra">while</span> <span class="palavra">I</span> <span class="palavra">weep</span> <span class="palavra">!</span><br>
+<span class="palavra">O</span> <span class="palavra">God</span> <span class="palavra">!</span> <span class="palavra">can</span> <span class="palavra">I</span> <span class="palavra">not</span> <span class="palavra">grasp</span><br>
+<span class="palavra">Them</span> <span class="palavra">with</span> <span class="palavra">a</span> <span class="palavra">tighter</span> <span class="palavra">clasp</span> <span class="palavra">?</span><br>
+<span class="palavra">O</span> <span class="palavra">God</span> <span class="palavra">!</span> <span class="palavra">can</span> <span class="palavra">I</span> <span class="palavra">not</span> <span class="palavra">save</span><br>
+<span class="palavra">One</span> <span class="palavra">from</span> <span class="palavra">the</span> <span class="palavra">pitiless</span> <span class="palavra">wave</span> <span class="palavra">?</span><br>
+<span class="palavra">Is</span> <span class="palavra">all</span> <span class="palavra">that</span> <span class="palavra">we</span> <span class="palavra">see</span> <span class="palavra">or</span> <span class="palavra">seem</span><br>
+<span class="palavra">But</span> <span class="palavra">a</span> <span class="palavra">dream</span> <span class="palavra">within</span> <span class="palavra">a</span> <span class="palavra">dream</span> <span class="palavra">?</span></p>
+    </div>
+
+       <div class="right">
+        <div class="actions">
+            <h1>Ações</h1>
+            <p class="actions_status"></p>
+            <p class="actions_sugestoes"></p>
+        </div>
+        <div class="Ortografia">
+            <h1>Ortografia</h1>
+            <p class="Ortografia_status"></p>
+            <p class="Ortografia_sugestoes"></p>
+        </div>
+        <div class="translation">
+            <h1>Traduções</h1>
+            <p class="translation_status"></p>
+            <p class="translation_sugestoes"></p>
+        </div>
+        <div class="definition">
+            <h1>Sinônimo(s)</h1>
+            <p class="definition_status"></p>
+            <h2>Definição(oes)</h2>
+            <p class="definition_sugestoes"></p>
+        </div>
+    </div>
+</div>
+
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
+

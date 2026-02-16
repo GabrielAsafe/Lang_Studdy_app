@@ -1,0 +1,5 @@
+depricated/dict/*.jsonl
+depricated/dict/*.gz
+__pycache__/
+*.pyc
+*.env
