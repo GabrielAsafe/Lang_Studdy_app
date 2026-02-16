@@ -38,15 +38,35 @@ def gerar_html_completo(texto_txt):
 <div class="bd">
     <div class="left">
         <div id="toggle_left">&#9664;</div>
-
         <h2>Configurações</h2>
-        <label for="lang_select">Idioma:</label>
-        <select id="lang_select">
-            <option value="pt_BR">Português</option>
-            <option value="en_US">Inglês</option>
-            <option value="de_DE">Alemão</option>
-        </select>
-        <p>Selecione o documento e clique para parsear</p>
+        <form id="configForm">
+            <label for="target_lang_select">Estou a estudar:</label>
+            <select id="target_lang_select">
+                <option value="pt_BR">Português</option>
+                <option value="en_US">Inglês</option>
+                <option value="de_DE">Alemão</option>
+            </select>
+
+            <label for="base_lang_select">Meu idioma nativo é:</label>
+            <select id="base_lang_select">
+                <option value="pt_BR">Português</option>
+                <option value="en_US">Inglês</option>
+                <option value="de_DE">Alemão</option>
+            </select>
+
+            <label for="base_read_voice">A voz de leitura será:</label> <!--vou martelar mas tem que adicionar dinamicamente depois-->
+            <select id="base_read_voice">
+                <option value="pt-br">Português</option>
+                <option value="en-us">Inglês</option>
+                <option value="de">Alemão</option>
+            </select>
+            
+            <input type="submit" value="Mudar definições">
+        </form>
+
+        <label for="fileInput">seleciona um arquivo para leitura</label>
+        <input type="file" id="fileInput" />
+
     </div>
 
     <div class="middle">

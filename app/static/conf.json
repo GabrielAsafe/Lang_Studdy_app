@@ -8,14 +8,419 @@
     {
       "key": "TARGET_LANGUAGE",
       "required": true,
-      "default": "pt_BR",
+      "default": "en_US",
       "description": "Idioma usado pelo Phunspell"
     },
     {
       "key": "BASE_LANGUAGE",
       "required": true,
-      "default": "pt_BR",
+      "default": "en_US",
       "description": "Idioma base do sistema"
+    },
+    {
+      "key": "VOICE_OPTIONS",
+      "options": {
+        "Afrikaans": [
+          "af"
+        ],
+        "Amharic": [
+          "am"
+        ],
+        "Aragonese": [
+          "an"
+        ],
+        "Arabic": [
+          "ar"
+        ],
+        "Assamese": [
+          "as"
+        ],
+        "Azerbaijani": [
+          "az"
+        ],
+        "Bashkir": [
+          "ba"
+        ],
+        "Belarusian": [
+          "be"
+        ],
+        "Bulgarian": [
+          "bg"
+        ],
+        "Bengali": [
+          "bn"
+        ],
+        "Bishnupriya Manipuri": [
+          "bpy"
+        ],
+        "Bosnian": [
+          "bs"
+        ],
+        "Catalan": [
+          "ca"
+        ],
+        "Cherokee ": [
+          "chr-US-Qaaa-x-west"
+        ],
+        "Chinese (Mandarin, latin as English)": [
+          "cmn"
+        ],
+        "Chinese (Mandarin, latin as Pinyin)": [
+          "cmn-latn-pinyin"
+        ],
+        "Czech": [
+          "cs"
+        ],
+        "Chuvash": [
+          "cv"
+        ],
+        "Welsh": [
+          "cy"
+        ],
+        "Danish": [
+          "da"
+        ],
+        "German": [
+          "de"
+        ],
+        "Greek": [
+          "el"
+        ],
+        "English (Caribbean)": [
+          "en-029"
+        ],
+        "English (Great Britain)": [
+          "en-gb"
+        ],
+        "English (Scotland)": [
+          "en-gb-scotland"
+        ],
+        "English (Lancaster)": [
+          "en-gb-x-gbclan"
+        ],
+        "English (West Midlands)": [
+          "en-gb-x-gbcwmd"
+        ],
+        "English (Received Pronunciation)": [
+          "en-gb-x-rp"
+        ],
+        "English (America)": [
+          "en-us"
+        ],
+        "English (America, New York City)": [
+          "en-us-nyc"
+        ],
+        "Esperanto": [
+          "eo"
+        ],
+        "Spanish (Spain)": [
+          "es"
+        ],
+        "Spanish (Latin America)": [
+          "es-419"
+        ],
+        "Estonian": [
+          "et"
+        ],
+        "Basque": [
+          "eu"
+        ],
+        "Persian": [
+          "fa"
+        ],
+        "Persian (Pinglish)": [
+          "fa-latn"
+        ],
+        "Finnish": [
+          "fi"
+        ],
+        "French (Belgium)": [
+          "fr-be"
+        ],
+        "French (Switzerland)": [
+          "fr-ch"
+        ],
+        "French (France)": [
+          "fr-fr"
+        ],
+        "Gaelic (Irish)": [
+          "ga"
+        ],
+        "Gaelic (Scottish)": [
+          "gd"
+        ],
+        "Guarani": [
+          "gn"
+        ],
+        "Greek (Ancient)": [
+          "grc"
+        ],
+        "Gujarati": [
+          "gu"
+        ],
+        "Hakka Chinese": [
+          "hak"
+        ],
+        "Hawaiian": [
+          "haw"
+        ],
+        "Hebrew": [
+          "he"
+        ],
+        "Hindi": [
+          "hi"
+        ],
+        "Croatian": [
+          "hr"
+        ],
+        "Haitian Creole": [
+          "ht"
+        ],
+        "Hungarian": [
+          "hu"
+        ],
+        "Armenian (East Armenia)": [
+          "hy"
+        ],
+        "Armenian (West Armenia)": [
+          "hyw"
+        ],
+        "Interlingua": [
+          "ia"
+        ],
+        "Indonesian": [
+          "id"
+        ],
+        "Ido": [
+          "io"
+        ],
+        "Icelandic": [
+          "is"
+        ],
+        "Italian": [
+          "it"
+        ],
+        "Japanese": [
+          "ja"
+        ],
+        "Lojban": [
+          "jbo"
+        ],
+        "Georgian": [
+          "ka"
+        ],
+        "Kazakh": [
+          "kk"
+        ],
+        "Greenlandic": [
+          "kl"
+        ],
+        "Kannada": [
+          "kn"
+        ],
+        "Korean": [
+          "ko"
+        ],
+        "Konkani": [
+          "kok"
+        ],
+        "Kurdish": [
+          "ku"
+        ],
+        "Kyrgyz": [
+          "ky"
+        ],
+        "Latin": [
+          "la"
+        ],
+        "Luxembourgish": [
+          "lb"
+        ],
+        "Lingua Franca Nova": [
+          "lfn"
+        ],
+        "Lithuanian": [
+          "lt"
+        ],
+        "Latgalian": [
+          "ltg"
+        ],
+        "Latvian": [
+          "lv"
+        ],
+        "M\u0101ori": [
+          "mi"
+        ],
+        "Macedonian": [
+          "mk"
+        ],
+        "Malayalam": [
+          "ml"
+        ],
+        "Marathi": [
+          "mr"
+        ],
+        "Malay": [
+          "ms"
+        ],
+        "Maltese": [
+          "mt"
+        ],
+        "Myanmar (Burmese)": [
+          "my"
+        ],
+        "Norwegian Bokm\u00e5l": [
+          "nb"
+        ],
+        "Nahuatl (Classical)": [
+          "nci"
+        ],
+        "Nepali": [
+          "ne"
+        ],
+        "Dutch": [
+          "nl"
+        ],
+        "Nogai": [
+          "nog"
+        ],
+        "Oromo": [
+          "om"
+        ],
+        "Oriya": [
+          "or"
+        ],
+        "Punjabi": [
+          "pa"
+        ],
+        "Papiamento": [
+          "pap"
+        ],
+        "Klingon": [
+          "piqd"
+        ],
+        "Polish": [
+          "pl"
+        ],
+        "Portuguese (Portugal)": [
+          "pt"
+        ],
+        "Portuguese (Brazil)": [
+          "pt-br"
+        ],
+        "Pyash": [
+          "py"
+        ],
+        "Lang_Belta": [
+          "qdb"
+        ],
+        "Quechua": [
+          "qu"
+        ],
+        "K'iche'": [
+          "quc"
+        ],
+        "Quenya": [
+          "qya"
+        ],
+        "Romanian": [
+          "ro"
+        ],
+        "Russian": [
+          "ru"
+        ],
+        "Russian (Latvia)": [
+          "ru-lv"
+        ],
+        "Sindhi": [
+          "sd"
+        ],
+        "Shan (Tai Yai)": [
+          "shn"
+        ],
+        "Sinhala": [
+          "si"
+        ],
+        "Sindarin": [
+          "sjn"
+        ],
+        "Slovak": [
+          "sk"
+        ],
+        "Slovenian": [
+          "sl"
+        ],
+        "Lule Saami": [
+          "smj"
+        ],
+        "Albanian": [
+          "sq"
+        ],
+        "Serbian": [
+          "sr"
+        ],
+        "Swedish": [
+          "sv"
+        ],
+        "Swahili": [
+          "sw"
+        ],
+        "Tamil": [
+          "ta"
+        ],
+        "Telugu": [
+          "te"
+        ],
+        "Thai": [
+          "th"
+        ],
+        "Turkmen": [
+          "tk"
+        ],
+        "Setswana": [
+          "tn"
+        ],
+        "Turkish": [
+          "tr"
+        ],
+        "Tatar": [
+          "tt"
+        ],
+        "Uyghur": [
+          "ug"
+        ],
+        "Ukrainian": [
+          "uk"
+        ],
+        "Urdu": [
+          "ur"
+        ],
+        "Uzbek": [
+          "uz"
+        ],
+        "Vietnamese (Northern)": [
+          "vi"
+        ],
+        "Vietnamese (Central)": [
+          "vi-vn-x-central"
+        ],
+        "Vietnamese (Southern)": [
+          "vi-vn-x-south"
+        ],
+        "Chinese (Cantonese)": [
+          "yue"
+        ],
+        "Chinese (Cantonese, latin as Jyutping)": [
+          "yue"
+        ]
+      },
+      "description": "Todas as vozes dispon\u00edveis"
+    },
+    {
+      "key": "CHOOSEN_VOICE",
+      "required": true,
+      "default": "en-us",
+      "description": "Idioma da leitura"
     }
   ]
 }

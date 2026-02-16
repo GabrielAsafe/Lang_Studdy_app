@@ -91,7 +91,9 @@ def register_routes(app):
                 item["default"] = data["TARGET_LANGUAGE"]
             if item["key"] == "BASE_LANGUAGE":
                 item["default"] = data["BASE_LANGUAGE"]
-
+            if item["key"] == "CHOOSEN_VOICE":
+                item["default"] = data["CHOOSEN_VOICE"]
+            
         with open(config_path, "w") as f:
             json.dump(config, f, indent=2)
 

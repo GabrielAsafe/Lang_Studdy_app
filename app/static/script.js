@@ -154,6 +154,11 @@ document.addEventListener("DOMContentLoaded", () => {
             const baseConfig = config.configurations.find(
                 item => item.key === "BASE_LANGUAGE"
             );
+            
+            const choosenVoice = config.configurations.find(
+                item => item.key === "CHOOSEN_VOICE"
+            );
+
 
             if (targetConfig) {
                 document.getElementById("target_lang_select").value = targetConfig.default;
@@ -162,18 +167,25 @@ document.addEventListener("DOMContentLoaded", () => {
             if (baseConfig) {
                 document.getElementById("base_lang_select").value = baseConfig.default;
             }
+
+            if (choosenVoice) {
+                document.getElementById("base_read_voice").value = choosenVoice.default;
+            }
+
+
         })
         .catch(error => console.error("Erro ao carregar conf.json:", error));
 });
 
 
-//atualizar escolhas
+//atualizar conf.js
 
 document.getElementById("configForm").addEventListener("submit", function(e) {
     e.preventDefault();
 
     const targetLang = document.getElementById("target_lang_select").value;
     const baseLang = document.getElementById("base_lang_select").value;
+    const choosenVoice = document.getElementById("base_read_voice").value;
 
 
     fetch("/update-config", {
@@ -183,7 +195,8 @@ document.getElementById("configForm").addEventListener("submit", function(e) {
         },
         body: JSON.stringify({
             TARGET_LANGUAGE: targetLang,
-            BASE_LANGUAGE: baseLang
+            BASE_LANGUAGE: baseLang,
+            CHOOSEN_VOICE:choosenVoice
         })
     })
     .then(res => res.json())
