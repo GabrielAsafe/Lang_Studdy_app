@@ -2,7 +2,7 @@
   "app": {
     "name": "Reading app",
     "version": "1.0.0",
-    "description": "Documenta\u00e7\u00e3o de configura\u00e7\u00e3o da aplica\u00e7\u00e3o"
+    "description": "Documentação de configuração da aplicação"
   },
   "configurations": [
     {
@@ -248,7 +248,7 @@
         "Latvian": [
           "lv"
         ],
-        "M\u0101ori": [
+        "Māori": [
           "mi"
         ],
         "Macedonian": [
@@ -269,7 +269,7 @@
         "Myanmar (Burmese)": [
           "my"
         ],
-        "Norwegian Bokm\u00e5l": [
+        "Norwegian Bokmål": [
           "nb"
         ],
         "Nahuatl (Classical)": [
@@ -414,7 +414,7 @@
           "yue"
         ]
       },
-      "description": "Todas as vozes dispon\u00edveis"
+      "description": "Todas as vozes disponíveis"
     },
     {
       "key": "CHOOSEN_VOICE",

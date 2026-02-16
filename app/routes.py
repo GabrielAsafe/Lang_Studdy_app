@@ -1,7 +1,10 @@
 from flask import render_template, request, jsonify, current_app
 from threading import Thread
 from .utils.tts import speak_text
+from .utils.parse import gerar_html_completo
 from .utils.wordnet import buscar_definicoes_sinonimos, buscar_definicoes_traduzidas
+from .utils.pdf import ler_pdf
+
 import json
 import os
 
@@ -98,3 +101,16 @@ def register_routes(app):
             json.dump(config, f, indent=2)
 
         return jsonify({"status": "success"})
+
+
+    @app.route("/parse_text", methods=["POST"])
+    def parse_text():
+        print("FILES:", request.files)
+        print("FORM:", request.form)
+
+        file = request.files.get("file")
+
+        if file is None:
+            return "ficheiro não enviado", 400
+
+        return "ok"

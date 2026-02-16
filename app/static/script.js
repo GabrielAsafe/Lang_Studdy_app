@@ -119,24 +119,21 @@ toggleBtn.addEventListener("click", () => {
 
 
 //ler arquivos
+document.getElementById('fileInput').addEventListener('change', async (event) => {
+  const file = event.target.files[0];
 
-document.getElementById('fileInput').addEventListener('change', (event) => {
-    const file = event.target.files[0];
-    const reader = new FileReader();
+  const formData = new FormData();
+  formData.append("file", file);
 
-    console.log(file),
-    console.log(reader);
-    // reader.onload = function () {
-    //     const content = reader.result;
-    //     console.log(content);
-    // };
+  const resp = await fetch("/parse_text", {
+    method: "POST",
+    body: formData
+  });
 
-    // reader.onerror = function () {
-    //     console.error('Error reading the file');
-    // };
-
-    // reader.readAsText(file, 'utf-8');
+  const text = await resp.text();
+  console.log(text);
 });
+
 
 
 
