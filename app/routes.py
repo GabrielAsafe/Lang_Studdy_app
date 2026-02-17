@@ -4,6 +4,8 @@ from .utils.tts import speak_text
 from .utils.parse import gerar_html_completo
 from .utils.wordnet import buscar_definicoes_sinonimos, buscar_definicoes_traduzidas
 from .utils.pdf import ler_pdf
+from .utils.dic import searchEntry
+
 
 import json
 import os
@@ -114,3 +116,41 @@ def register_routes(app):
             return "ficheiro não enviado", 400
 
         return "ok"
+    
+    @app.route("/search_On_Dict", methods=["POST"])
+    def search_On_Dict():
+
+        if not request.is_json:
+            return {"error": "Request deve ser JSON"}, 400
+
+        data = request.get_json()
+
+        palavra = data.get("palavra")
+        if not palavra:
+            return {"error": "Palavra não enviada"}, 400
+
+
+        alias = app.config['SHORT_TARGET_ALIAS']
+        if not alias:
+            return {"error": "SHORT_TARGET_ALIAS não configurado"}, 500
+
+        #alias = f"'{alias}'"
+
+        db_options = app.config['DATABASE_DICTIONARY_OPTIONS']
+        
+        print(db_options)
+        
+        if alias not in db_options:
+            return {"error": f"Alias '{alias}' inválido"}, 500
+
+        db_path = db_options[alias][0]
+
+        print("Palavra:", palavra)
+        print("Alias:", alias)
+        print("DB:", db_path)
+
+        print(os.getcwd())
+
+        resultado = searchEntry("app/utils/" +db_path, alias, palavra)
+
+        return {"status": "ok", "resultado": resultado}

@@ -114,7 +114,7 @@ with open("parser/texto.txt", encoding="utf-8") as f:
 html_final = gerar_html_completo(texto)
 
 # Salva ou imprime
-with open("templates/index.html", "w", encoding="utf-8") as f:
+with open("app/templates/index.html", "w", encoding="utf-8") as f:
     f.write(html_final)
 
 print("HTML gerado com sucesso!")

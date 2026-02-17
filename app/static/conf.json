@@ -8,13 +8,13 @@
     {
       "key": "TARGET_LANGUAGE",
       "required": true,
-      "default": "en_US",
+      "default": "pt_BR",
       "description": "Idioma usado pelo Phunspell"
     },
     {
       "key": "BASE_LANGUAGE",
       "required": true,
-      "default": "en_US",
+      "default": "pt_BR",
       "description": "Idioma base do sistema"
     },
     {
@@ -419,8 +419,28 @@
     {
       "key": "CHOOSEN_VOICE",
       "required": true,
-      "default": "en-us",
+      "default": "pt-br",
       "description": "Idioma da leitura"
+    },
+    {
+      "key": "SHORT_TARGET_ALIAS",
+      "required": true,
+      "default": "pt",
+      "description": "short alias para usar no dicionário"
+    },
+    {
+      "key": "DATABASE_DICTIONARY_OPTIONS",
+      "options": {
+        "en": [
+          "en_dict.db"
+        ],
+        "pt": [
+          "pt_dict.db"
+        ],
+        "de": [
+          "de_dict.db"
+        ]
+      }
     }
   ]
 }

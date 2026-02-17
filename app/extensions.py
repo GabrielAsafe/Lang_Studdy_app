@@ -51,13 +51,22 @@ def init_voice_options():
 
 def define_voices_list(app):
     config_path = os.path.join(app.root_path, "static", "conf.json")
+    
+    default = ''
 
     with open(config_path, "r", encoding="utf-8") as f:
         config = json.load(f)
 
     for item in config["configurations"]:
+        if item["key"] == "CHOOSEN_VOICE":
+            default = item['default']
         if item["key"] == "VOICE_OPTIONS":
             item["options"] = init_voice_options()
+        if item["key"] == "SHORT_TARGET_ALIAS":
+            item["default"] = default[:2]  # pega os 2 primeiros caracteres da voz escolhida
+
 
     with open(config_path, "w", encoding="utf-8") as f:
         json.dump(config, f, indent=2, ensure_ascii=False)
+
+

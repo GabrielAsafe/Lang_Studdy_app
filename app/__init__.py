@@ -8,7 +8,7 @@ def create_app():
     app = Flask(__name__)
 
     load_config_from_json(app)
-
+  
     app.config.update({
         "LANG": "pt",
         "LEXICON": "omw-pt",

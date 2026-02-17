@@ -4,17 +4,17 @@ document.addEventListener("click", async (e) => {
   const palavra = e.target.innerText;
 
   try {
-    const [ortografia, definicao, voz] = await Promise.all([
+    const [ortografia, definicao, dict_search] = await Promise.all([
     verificarOrtografia(palavra),
     verificarDefinicao(palavra),
+    buscarNoDicionario(palavra),
     ler(palavra)
-
     ]);
 
 
     escreverOrto(ortografia, ".Ortografia");
     escreverDef(definicao, ".definition");
-
+    escreverdicionario(".dicionario")
 
   } catch (err) {
     //console.error("Erro:", err);
@@ -23,6 +23,17 @@ document.addEventListener("click", async (e) => {
 });
 
 //--------------faz o fetch
+const buscarNoDicionario = async (palavra) => {
+  const resp = await fetch("/search_On_Dict", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ palavra })
+  });
+
+  return resp.json();
+};
+
+
 const verificarOrtografia = async (palavra) => {
   const resp = await fetch("/verificar", {
     method: "POST",
