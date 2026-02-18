@@ -108,7 +108,7 @@ def gerar_html_completo(texto_txt):
 
 
 # Leitura do arquivo TXT
-with open("parser/textoen.txt", encoding="utf-8") as f:
+with open("parser/texto.txt", encoding="utf-8") as f:
     texto = f.read()
 
 html_final = gerar_html_completo(texto)

@@ -8,25 +8,36 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>  
+     <header class="app-header">
+        <div class="header-left">
+            <a href="{{ url_for('index') }}" class="back-btn">&#8592; Voltar</a>
+        </div>
+        <div class="header-center">
+            <h1>Reading App</h1>
+        </div>
+    </header>
 <div class="bd">
+       
+
+
     <div class="left">
         <div id="toggle_left">&#9664;</div>
         <h2>Configurações</h2>
         <form id="configForm">
-            <label for="target_lang_select">Meu texto está no idioma:</label>
+            <label for="target_lang_select">Estou a estudar:</label>
             <select id="target_lang_select">
                 <option value="pt_BR">Português</option>
                 <option value="en_US">Inglês</option>
                 <option value="de_DE">Alemão</option>
             </select>
-<hr>
-            <label for="base_lang_select">O idioma do dicionario deveria estar em:</label>
+
+            <label for="base_lang_select">Meu idioma nativo é:</label>
             <select id="base_lang_select">
                 <option value="pt_BR">Português</option>
                 <option value="en_US">Inglês</option>
                 <option value="de_DE">Alemão</option>
             </select>
-<hr>
+
             <label for="base_read_voice">A voz de leitura será:</label> <!--vou martelar mas tem que adicionar dinamicamente depois-->
             <select id="base_read_voice">
                 <option value="pt-br">Português</option>
@@ -43,46 +54,24 @@
     </div>
 
     <div class="middle">
-        <p><span class="palavra">HOW</span> <span class="palavra">MUCH</span> <span class="palavra">MORE</span> <span class="palavra">BEAUTIFUL</span> <span class="palavra">COULD</span> <span class="palavra">YOU</span> <span class="palavra">BE</span> <span class="palavra">NOW</span> <span class="palavra">YOU</span> <span class="palavra">RE</span> <span class="palavra">EATING</span> <span class="palavra">PEACHES</span> <span class="palavra">FOR</span> <span class="palavra">BREAKFAST</span><br>
-<span class="palavra">and</span> <span class="palavra">I</span> <span class="palavra">am</span> <span class="palavra">licking</span> <span class="palavra">you</span> <span class="palavra">out</span> <span class="palavra">like</span> <span class="palavra">a</span> <span class="palavra">pan</span> <span class="palavra">glinting</span> <span class="palavra">I</span> <span class="palavra">turn</span> <span class="palavra">all</span> <span class="palavra">your</span> <span class="palavra">stories</span><br>
-<span class="palavra">round</span> <span class="palavra">the</span> <span class="palavra">beating</span> <span class="palavra">part</span> <span class="palavra">of</span> <span class="palavra">me</span></p>
-<p><span class="palavra">muted</span> <span class="palavra">living</span> <span class="palavra">tires</span> <span class="palavra">me</span> <span class="palavra">out</span> <span class="palavra">and</span> <span class="palavra">the</span> <span class="palavra">green</span> <span class="palavra">parakeets</span> <span class="palavra">tell</span> <span class="palavra">me</span> <span class="palavra">I</span> <span class="palavra">must</span> <span class="palavra">be</span> <span class="palavra">quick</span><br>
-<span class="palavra">they</span> <span class="palavra">emphasise</span> <span class="palavra">that</span> <span class="palavra">haste</span> <span class="palavra">is</span> <span class="palavra">required</span></p>
-<p><span class="palavra">I</span> <span class="palavra">pour</span> <span class="palavra">myself</span> <span class="palavra">out</span> <span class="palavra">all</span> <span class="palavra">over</span> <span class="palavra">you</span> <span class="palavra">like</span> <span class="palavra">something</span> <span class="palavra">for</span> <span class="palavra">which</span> <span class="palavra">I</span> <span class="palavra">d</span> <span class="palavra">still</span> <span class="palavra">like</span> <span class="palavra">to</span> <span class="palavra">find</span> <span class="palavra">a</span> <span class="palavra">metaphor</span><br>
-<span class="palavra">the</span> <span class="palavra">days</span> <span class="palavra">are</span> <span class="palavra">sweet</span> <span class="palavra">I</span> <span class="palavra">pick</span> <span class="palavra">them</span><br>
-<span class="palavra">cook</span> <span class="palavra">them</span> <span class="palavra">down</span> <span class="palavra">thick</span> <span class="palavra">to</span> <span class="palavra">syrup</span><br>
-<span class="palavra">add</span> <span class="palavra">too</span> <span class="palavra">much</span> <span class="palavra">sugar</span> <span class="palavra">again</span> <span class="palavra">leave</span> <span class="palavra">it</span> <span class="palavra">sitting</span> <span class="palavra">there</span> <span class="palavra">night</span> <span class="palavra">after</span> <span class="palavra">night</span><br>
-<span class="palavra">tea</span> <span class="palavra">towel</span> <span class="palavra">over</span> <span class="palavra">the</span> <span class="palavra">top</span> <span class="palavra">as</span> <span class="palavra">though</span> <span class="palavra">this</span> <span class="palavra">will</span> <span class="palavra">somehow</span> <span class="palavra">protect</span> <span class="palavra">us</span> <span class="palavra">from</span> <span class="palavra">the</span> <span class="palavra">insects</span></p>
-<p><span class="palavra">how</span> <span class="palavra">much</span> <span class="palavra">more</span> <span class="palavra">beautiful</span> <span class="palavra">could</span> <span class="palavra">you</span> <span class="palavra">be</span> <span class="palavra">and</span> <span class="palavra">the</span> <span class="palavra">procession</span> <span class="palavra">of</span> <span class="palavra">ants</span><br>
-<span class="palavra">winding</span> <span class="palavra">across</span> <span class="palavra">the</span> <span class="palavra">tile</span> <span class="palavra">floor</span></p>
+    <h2>Ficheiros disponíveis:</h2>
+
+        <ul>
+        {% for arquivo in arquivos %}
+            <li>
+            <a href="{{ url_for('ver_template', nome=arquivo) }}">
+                {{ arquivo }}
+            </a>
+            </li>
+        {% endfor %}
+        </ul>
+
     </div>
+    <div class="middle">   </div>
 
-       <div class="right">
-        <div class="actions">
-            <h1>Ações</h1>
-            <p class="actions_status"></p>
-            <p class="actions_sugestoes"></p>
-        </div>
-        <div class="Ortografia">
-            <h1>Ortografia</h1>
-            <p class="Ortografia_status"></p>
-            <p class="Ortografia_sugestoes"></p>
-        </div>
-        <div class="translation">
-            <h1>Traduções</h1>
-            <p class="translation_status"></p>
-            <p class="translation_sugestoes"></p>
-        </div>
-        <div class="definition">
-            <h1>Sinônimo(s)</h1>
-            <p class="definition_status"></p>
-            <h2>Definição(oes)</h2>
-            <p class="definition_sugestoes"></p>
-        </div>
-    </div>
-</div>
-
-
+    <footer class="app-footer">
+    <p>© 2026 Reading App • Desenvolvido por mim com ajuda do gpt</p>
+    </footer>
 <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>

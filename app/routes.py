@@ -1,10 +1,12 @@
-from flask import render_template, request, jsonify, current_app
+from flask import render_template, request, jsonify, current_app, send_from_directory
 from threading import Thread
 from .utils.tts import speak_text
 from .utils.parse import gerar_html_completo
 from .utils.wordnet import buscar_definicoes_sinonimos, buscar_definicoes_traduzidas
 from .utils.pdf import ler_pdf
+from .utils.parse import criar_arquivo
 from .utils.dic import searchEntry
+from .config_loader import save_config_on_Jsons
 
 
 import json
@@ -17,8 +19,22 @@ def register_routes(app):
 
     @app.route("/", methods=["GET", "POST"])
     def index():
-        return render_template("index.html")
+        templates_path = os.path.join(os.getcwd(), "app/templates/gerados")
 
+        arquivos = [
+            f for f in os.listdir(templates_path)
+            if os.path.isfile(os.path.join(templates_path, f))
+            and f.endswith(".html")
+            and f != "index.html"   # opcional (para não listar o próprio index)
+        ]
+
+        return render_template("index.html", arquivos=arquivos)
+    
+    @app.route("/ver/<nome>")
+    def ver_template(nome):
+        return render_template(f"gerados/{nome}")
+
+        
 
     @app.route("/verificar", methods=["POST"])
     def verificar():
@@ -128,36 +144,31 @@ def register_routes(app):
     def update_config():
         data = request.json
 
-        config_path = os.path.join(current_app.root_path, "static", "conf.json")
-
-        with open(config_path, "r") as f:
-            config = json.load(f)
-
-        for item in config["configurations"]:
-            if item["key"] == "TARGET_LANGUAGE":
-                item["default"] = data["TARGET_LANGUAGE"]
-            if item["key"] == "BASE_LANGUAGE":
-                item["default"] = data["BASE_LANGUAGE"]
-            if item["key"] == "CHOOSEN_VOICE":
-                item["default"] = data["CHOOSEN_VOICE"]
-            
-        with open(config_path, "w") as f:
-            json.dump(config, f, indent=2)
+        save_config_on_Jsons(current_app, data)
 
         return jsonify({"status": "success"})
 
 
     @app.route("/parse_text", methods=["POST"])
     def parse_text():
-        # print("FILES:", request.files)
-        # print("FORM:", request.form)
-
         file = request.files.get("file")
 
         if file is None:
             return "ficheiro não enviado", 400
 
+        if file.content_type == "application/pdf":
+            text = ler_pdf(file)   # passa o file, não o nome
+
+        elif file.content_type == "text/plain":
+            text = file.read().decode("utf-8")
+
+        else:
+            return "tipo de ficheiro não suportado", 400
+
+        criar_arquivo(text,file.filename)
+
         return "ok"
+
     
     @app.route("/search_On_Dict", methods=["POST"])
     def search_On_Dict():

@@ -1,0 +1,119 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Reading app</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>  
+    <header class="app-header">
+        <div class="header-left">
+            <a href="{{ url_for('index') }}" class="back-btn">&#8592; Voltar</a>
+        </div>
+        <div class="header-center">
+            <h1>Reading App</h1>
+        </div>
+    </header>
+<div class="bd">
+    <div class="left">
+        <div id="toggle_left">&#9664;</div>
+        <h2>Configurações</h2>
+        <form id="configForm">
+            <label for="target_lang_select">Estou a estudar:</label>
+            <select id="target_lang_select">
+                <option value="pt_BR">Português</option>
+                <option value="en_US">Inglês</option>
+                <option value="de_DE">Alemão</option>
+            </select>
+
+            <label for="base_lang_select">Meu idioma nativo é:</label>
+            <select id="base_lang_select">
+                <option value="pt_BR">Português</option>
+                <option value="en_US">Inglês</option>
+                <option value="de_DE">Alemão</option>
+            </select>
+
+            <label for="base_read_voice">A voz de leitura será:</label> <!--vou martelar mas tem que adicionar dinamicamente depois-->
+            <select id="base_read_voice">
+                <option value="pt-br">Português</option>
+                <option value="en-us">Inglês</option>
+                <option value="de">Alemão</option>
+            </select>
+            
+            <input type="submit" value="Mudar definições">
+        </form>
+
+        <label for="fileInput">seleciona um arquivo para leitura</label>
+         <input type="file" id="fileInput" name="file">
+
+
+    </div>
+
+    <div class="middle">
+        <p><span class="palavra">Eros</span> <span class="palavra">,</span> <span class="palavra">o</span> <span class="palavra">deus</span> <span class="palavra">do</span> <span class="palavra">amor</span> <span class="palavra">,</span> <span class="palavra">era</span> <span class="palavra">conhecido</span> <span class="palavra">por</span> <span class="palavra">suas</span> <span class="palavra">flechas</span> <span class="palavra">capazes</span> <span class="palavra">de</span> <span class="palavra">despertar</span> <span class="palavra">paixões</span><br>
+<span class="palavra">irresistíveis</span> <span class="palavra">tanto</span> <span class="palavra">em</span> <span class="palavra">deuses</span> <span class="palavra">quanto</span> <span class="palavra">em</span> <span class="palavra">mortais</span> <span class="palavra">.</span> <span class="palavra">Apesar</span> <span class="palavra">de</span> <span class="palavra">viver</span> <span class="palavra">cercado</span> <span class="palavra">por</span> <span class="palavra">desejos</span><br>
+<span class="palavra">alheios</span> <span class="palavra">,</span> <span class="palavra">ele</span> <span class="palavra">próprio</span> <span class="palavra">nunca</span> <span class="palavra">havia</span> <span class="palavra">conhecido</span> <span class="palavra">o</span> <span class="palavra">amor</span> <span class="palavra">verdadeiro</span> <span class="palavra">até</span> <span class="palavra">o</span> <span class="palavra">dia</span> <span class="palavra">em</span> <span class="palavra">que</span> <span class="palavra">viu</span><br>
+<span class="palavra">Psique</span> <span class="palavra">.</span><br>
+<span class="palavra">Psique</span> <span class="palavra">era</span> <span class="palavra">uma</span> <span class="palavra">mortal</span> <span class="palavra">de</span> <span class="palavra">beleza</span> <span class="palavra">tão</span> <span class="palavra">extraordinária</span> <span class="palavra">que</span> <span class="palavra">as</span> <span class="palavra">pessoas</span> <span class="palavra">passaram</span> <span class="palavra">a</span> <span class="palavra">venerá</span> <span class="palavra">la</span><br>
+<span class="palavra">como</span> <span class="palavra">se</span> <span class="palavra">fosse</span> <span class="palavra">uma</span> <span class="palavra">deusa</span> <span class="palavra">.</span> <span class="palavra">Isso</span> <span class="palavra">despertou</span> <span class="palavra">o</span> <span class="palavra">ciúme</span> <span class="palavra">de</span> <span class="palavra">Afrodite</span> <span class="palavra">,</span> <span class="palavra">mãe</span> <span class="palavra">de</span> <span class="palavra">Eros</span> <span class="palavra">,</span> <span class="palavra">que</span> <span class="palavra">ordenou</span><br>
+<span class="palavra">ao</span> <span class="palavra">filho</span> <span class="palavra">que</span> <span class="palavra">fizesse</span> <span class="palavra">Psique</span> <span class="palavra">se</span> <span class="palavra">apaixonar</span> <span class="palavra">pelo</span> <span class="palavra">homem</span> <span class="palavra">mais</span> <span class="palavra">desprezível</span> <span class="palavra">que</span> <span class="palavra">existisse</span> <span class="palavra">.</span> <span class="palavra">Mas</span> <span class="palavra">,</span><br>
+<span class="palavra">ao</span> <span class="palavra">aproximar</span> <span class="palavra">se</span> <span class="palavra">dela</span> <span class="palavra">,</span> <span class="palavra">Eros</span> <span class="palavra">feriu</span> <span class="palavra">a</span> <span class="palavra">si</span> <span class="palavra">mesmo</span> <span class="palavra">com</span> <span class="palavra">uma</span> <span class="palavra">de</span> <span class="palavra">suas</span> <span class="palavra">flechas</span> <span class="palavra">e</span> <span class="palavra">se</span> <span class="palavra">apaixonou</span><br>
+<span class="palavra">perdidamente</span> <span class="palavra">.</span><br>
+<span class="palavra">Para</span> <span class="palavra">protegê</span> <span class="palavra">la</span> <span class="palavra">da</span> <span class="palavra">ira</span> <span class="palavra">de</span> <span class="palavra">Afrodite</span> <span class="palavra">,</span> <span class="palavra">Eros</span> <span class="palavra">levou</span> <span class="palavra">Psique</span> <span class="palavra">para</span> <span class="palavra">um</span> <span class="palavra">palácio</span> <span class="palavra">encantado</span> <span class="palavra">,</span> <span class="palavra">onde</span> <span class="palavra">ela</span><br>
+<span class="palavra">vivia</span> <span class="palavra">cercada</span> <span class="palavra">de</span> <span class="palavra">conforto</span> <span class="palavra">e</span> <span class="palavra">carinho</span> <span class="palavra">.</span> <span class="palavra">Ele</span> <span class="palavra">a</span> <span class="palavra">visitava</span> <span class="palavra">todas</span> <span class="palavra">as</span> <span class="palavra">noites</span> <span class="palavra">,</span> <span class="palavra">mas</span> <span class="palavra">nunca</span> <span class="palavra">permitia</span> <span class="palavra">que</span><br>
+<span class="palavra">ela</span> <span class="palavra">visse</span> <span class="palavra">seu</span> <span class="palavra">rosto</span> <span class="palavra">,</span> <span class="palavra">pedindo</span> <span class="palavra">apenas</span> <span class="palavra">que</span> <span class="palavra">confiasse</span> <span class="palavra">nele</span> <span class="palavra">.</span> <span class="palavra">Por</span> <span class="palavra">um</span> <span class="palavra">tempo</span> <span class="palavra">,</span> <span class="palavra">Psique</span> <span class="palavra">foi</span> <span class="palavra">feliz</span><br>
+<span class="palavra">até</span> <span class="palavra">que</span> <span class="palavra">a</span> <span class="palavra">dúvida</span> <span class="palavra">,</span> <span class="palavra">plantada</span> <span class="palavra">por</span> <span class="palavra">suas</span> <span class="palavra">irmãs</span> <span class="palavra">invejosas</span> <span class="palavra">,</span> <span class="palavra">começou</span> <span class="palavra">a</span> <span class="palavra">crescer</span> <span class="palavra">.</span><br>
+<span class="palavra">Certa</span> <span class="palavra">noite</span> <span class="palavra">,</span> <span class="palavra">tomada</span> <span class="palavra">pela</span> <span class="palavra">curiosidade</span> <span class="palavra">,</span> <span class="palavra">Psique</span> <span class="palavra">acendeu</span> <span class="palavra">uma</span> <span class="palavra">lamparina</span> <span class="palavra">enquanto</span> <span class="palavra">Eros</span><br>
+<span class="palavra">dormia</span> <span class="palavra">.</span> <span class="palavra">Ao</span> <span class="palavra">ver</span> <span class="palavra">o</span> <span class="palavra">rosto</span> <span class="palavra">do</span> <span class="palavra">deus</span> <span class="palavra">do</span> <span class="palavra">amor</span> <span class="palavra">,</span> <span class="palavra">ficou</span> <span class="palavra">maravilhada</span> <span class="palavra">,</span> <span class="palavra">mas</span> <span class="palavra">uma</span> <span class="palavra">gota</span> <span class="palavra">de</span> <span class="palavra">óleo</span> <span class="palavra">quente</span><br>
+<span class="palavra">caiu</span> <span class="palavra">sobre</span> <span class="palavra">ele</span> <span class="palavra">,</span> <span class="palavra">acordando</span> <span class="palavra">o</span> <span class="palavra">.</span> <span class="palavra">Ferido</span> <span class="palavra">não</span> <span class="palavra">apenas</span> <span class="palavra">no</span> <span class="palavra">corpo</span> <span class="palavra">,</span> <span class="palavra">mas</span> <span class="palavra">no</span> <span class="palavra">coração</span> <span class="palavra">,</span> <span class="palavra">Eros</span> <span class="palavra">fugiu</span> <span class="palavra">.</span><br>
+<span class="palavra">Arrependida</span> <span class="palavra">,</span> <span class="palavra">Psique</span> <span class="palavra">iniciou</span> <span class="palavra">uma</span> <span class="palavra">longa</span> <span class="palavra">jornada</span> <span class="palavra">para</span> <span class="palavra">reconquistar</span> <span class="palavra">seu</span> <span class="palavra">amor</span> <span class="palavra">.</span> <span class="palavra">Enfrentou</span><br>
+<span class="palavra">provas</span> <span class="palavra">quase</span> <span class="palavra">impossíveis</span> <span class="palavra">impostas</span> <span class="palavra">por</span> <span class="palavra">Afrodite</span> <span class="palavra">separar</span> <span class="palavra">grãos</span> <span class="palavra">impossíveis</span> <span class="palavra">de</span> <span class="palavra">contar</span> <span class="palavra">,</span><br>
+<span class="palavra">buscar</span> <span class="palavra">lã</span> <span class="palavra">dourada</span> <span class="palavra">,</span> <span class="palavra">descer</span> <span class="palavra">ao</span> <span class="palavra">mundo</span> <span class="palavra">dos</span> <span class="palavra">mortos</span> <span class="palavra">.</span> <span class="palavra">Em</span> <span class="palavra">cada</span> <span class="palavra">desafio</span> <span class="palavra">,</span> <span class="palavra">sua</span> <span class="palavra">determinação</span> <span class="palavra">e</span><br>
+<span class="palavra">amor</span> <span class="palavra">a</span> <span class="palavra">mantiveram</span> <span class="palavra">de</span> <span class="palavra">pé</span> <span class="palavra">.</span><br>
+<br>
+<span class="palavra">antes</span> <span class="palavra">dela</span> <span class="palavra">poder</span> <span class="palavra">terminar</span> <span class="palavra">as</span> <span class="palavra">provas</span> <span class="palavra">,</span> <span class="palavra">afrodite</span> <span class="palavra">a</span> <span class="palavra">amaldiçoou</span> <span class="palavra">e</span> <span class="palavra">a</span> <span class="palavra">lançou</span> <span class="palavra">no</span> <span class="palavra">tártaro</span> <span class="palavra">,</span> <span class="palavra">longe</span><br>
+<span class="palavra">demais</span> <span class="palavra">até</span> <span class="palavra">para</span> <span class="palavra">hades</span> <span class="palavra">a</span> <span class="palavra">buscar</span> <span class="palavra">.</span><br>
+<span class="palavra">depois</span> <span class="palavra">que</span> <span class="palavra">eros</span> <span class="palavra">a</span> <span class="palavra">encontrar</span> <span class="palavra">,</span> <span class="palavra">segue</span> <span class="palavra">a</span> <span class="palavra">história</span><br>
+<br>
+<span class="palavra">Comovido</span> <span class="palavra">pela</span> <span class="palavra">coragem</span> <span class="palavra">de</span> <span class="palavra">Psique</span> <span class="palavra">,</span> <span class="palavra">Eros</span> <span class="palavra">finalmente</span> <span class="palavra">interveio</span> <span class="palavra">.</span> <span class="palavra">Pediu</span> <span class="palavra">a</span> <span class="palavra">Zeus</span> <span class="palavra">que</span> <span class="palavra">tornasse</span><br>
+<span class="palavra">Psique</span> <span class="palavra">imortal</span> <span class="palavra">,</span> <span class="palavra">para</span> <span class="palavra">que</span> <span class="palavra">pudessem</span> <span class="palavra">ficar</span> <span class="palavra">juntos</span> <span class="palavra">sem</span> <span class="palavra">medo</span> <span class="palavra">ou</span> <span class="palavra">segredos</span> <span class="palavra">.</span> <span class="palavra">O</span> <span class="palavra">pedido</span> <span class="palavra">foi</span><br>
+<span class="palavra">atendido</span> <span class="palavra">,</span> <span class="palavra">e</span> <span class="palavra">os</span> <span class="palavra">deuses</span> <span class="palavra">celebraram</span> <span class="palavra">o</span> <span class="palavra">casamento</span> <span class="palavra">do</span> <span class="palavra">Amor</span> <span class="palavra">com</span> <span class="palavra">a</span> <span class="palavra">Alma</span> <span class="palavra">.</span><br>
+<span class="palavra">Assim</span> <span class="palavra">,</span> <span class="palavra">Eros</span> <span class="palavra">e</span> <span class="palavra">Psique</span> <span class="palavra">permaneceram</span> <span class="palavra">unidos</span> <span class="palavra">,</span> <span class="palavra">simbolizando</span> <span class="palavra">que</span> <span class="palavra">o</span> <span class="palavra">amor</span> <span class="palavra">verdadeiro</span> <span class="palavra">não</span><br>
+<span class="palavra">nasce</span> <span class="palavra">apenas</span> <span class="palavra">do</span> <span class="palavra">desejo</span> <span class="palavra">,</span> <span class="palavra">mas</span> <span class="palavra">cresce</span> <span class="palavra">com</span> <span class="palavra">confiança</span> <span class="palavra">,</span> <span class="palavra">perda</span> <span class="palavra">,</span> <span class="palavra">esforço</span> <span class="palavra">e</span> <span class="palavra">transformação</span> <span class="palavra">.</span></p>
+    </div>
+
+       <div class="right">
+        <div class="actions">
+            <h1>Ações</h1>
+            <p class="actions_status"></p>
+            <p class="actions_sugestoes"></p>
+        </div>
+        <div class="Ortografia">
+            <h1>Ortografia</h1>
+            <p class="Ortografia_status"></p>
+            <p class="Ortografia_sugestoes"></p>
+        </div>
+        <div class="translation">
+            <h1>Traduções</h1>
+            <p class="translation_status"></p>
+            <p class="translation_sugestoes"></p>
+        </div>
+        <div class="definition">
+            <h1>Sinônimo(s)</h1>
+            <p class="definition_status"></p>
+            <h2>Definição(oes)</h2>
+            <p class="definition_sugestoes"></p>
+        </div>
+    </div>
+</div>
+
+    <footer class="app-footer">
+        <p>© 2026 Reading App • Desenvolvido por mim e o gpt ajudou hehe</p>
+    </footer>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
+

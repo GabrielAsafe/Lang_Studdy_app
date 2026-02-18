@@ -35,6 +35,14 @@ def gerar_html_completo(texto_txt):
     <link rel="stylesheet" href="{{{{ url_for('static', filename='style.css') }}}}">
 </head>
 <body>  
+    <header class="app-header">
+        <div class="header-left">
+            <a href="{{{{ url_for('index') }}}}" class="back-btn">&#8592; Voltar</a>
+        </div>
+        <div class="header-center">
+            <h1>Reading App</h1>
+        </div>
+    </header>
 <div class="bd">
     <div class="left">
         <div id="toggle_left">&#9664;</div>
@@ -99,6 +107,9 @@ def gerar_html_completo(texto_txt):
     </div>
 </div>
 
+    <footer class="app-footer">
+        <p>© 2026 Reading App • Desenvolvido por mim e o gpt ajudou hehe</p>
+    </footer>
 
 <script src="{{{{ url_for('static', filename='script.js') }}}}"></script>
 </body>
@@ -106,3 +117,13 @@ def gerar_html_completo(texto_txt):
 
 """
     return html_completo
+
+
+def criar_arquivo(texto, filename):
+    html_final = gerar_html_completo(texto)
+
+    # Salva ou imprime
+    with open(f"app/templates/gerados/{filename}.html", "w", encoding="utf-8") as f:
+        f.write(html_final)
+
+    print("HTML gerado com sucesso!")
