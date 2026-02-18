@@ -8,3 +8,5 @@ pdfplumber>=0.11.9
 #python -m wn download omw-pt
 #python -m wn download oewn
 #python -m wn download odenet
+#python -m wn download omw-en
+#python -m wn download omw-pt

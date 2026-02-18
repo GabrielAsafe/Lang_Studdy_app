@@ -8,8 +8,8 @@
     {
       "key": "TARGET_LANGUAGE",
       "required": true,
-      "default": "pt_BR",
-      "description": "Idioma usado pelo Phunspell"
+      "default": "en_US",
+      "description": "Idioma usado pelo Phunspell, um corretor ortográfico, analisador morfológico e biblioteca de código aberto projetado para idiomas com morfologia complexa, composto de palavras e suporte Unicode."
     },
     {
       "key": "BASE_LANGUAGE",
@@ -419,14 +419,14 @@
     {
       "key": "CHOOSEN_VOICE",
       "required": true,
-      "default": "pt-br",
+      "default": "en-us",
       "description": "Idioma da leitura"
     },
     {
       "key": "SHORT_TARGET_ALIAS",
       "required": true,
-      "default": "pt",
-      "description": "short alias para usar no dicionário"
+      "default": "en",
+      "description": "short alias para usar no dicionário, decidido a partir da BASE_LANGUAGE, pois é o idioma em que quero o dicionário"
     },
     {
       "key": "DATABASE_DICTIONARY_OPTIONS",

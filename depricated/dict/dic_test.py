@@ -144,4 +144,4 @@ SELECT gloss FROM entries
 WHERE word = ? AND lang_code = ?
 """, ("liebe", "de"))
 
-print(cur.fetchall())
+#print(cur.fetchall())

@@ -58,7 +58,7 @@ def define_voices_list(app):
         config = json.load(f)
 
     for item in config["configurations"]:
-        if item["key"] == "CHOOSEN_VOICE":
+        if item["key"] == "TARGET_LANGUAGE":
             default = item['default']
         if item["key"] == "VOICE_OPTIONS":
             item["options"] = init_voice_options()

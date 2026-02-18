@@ -11,6 +11,8 @@ import json
 import os
 
 
+
+
 def register_routes(app):
 
     @app.route("/", methods=["GET", "POST"])
@@ -28,6 +30,11 @@ def register_routes(app):
 
         if not palavra:
             return jsonify({"erro": "nenhuma palavra enviada"}), 400
+        
+        print("RETORNANDO JSON verificar:", {
+            "palavra": palavra
+        })
+
 
         if h.lookup(palavra):
             return jsonify({"correta": True, "palavra": palavra, "sugestoes": []})
@@ -36,35 +43,70 @@ def register_routes(app):
                 sugestoes.append(sug)
             return jsonify({"correta": False, "palavra": palavra, "sugestoes": sugestoes[:5]})
 
-
     @app.route("/definitions", methods=["POST"])
     def fetch():
+        WORDNETS = {
+        "en_US": current_app.wn_en,
+        "pt_BR": current_app.wn_pt,
+        "de_DE": current_app.wn_de
+        }
         data = request.json
-        palavra = data.get("palavra", "")
-        lang = data.get("lang", "en_US")  # padrão em inglês
-        
-        
-        # Inicializa Wordnets
-        w_en = current_app.wn_en
-        w_pt = current_app.wn_pt
-        w_de = current_app.wn_de
+        palavra = data.get("palavra", "").strip()
 
-        
-        # Busca synsets em inglês (ponto de partida)
-        synsets_en = w_en.synsets(palavra)
-        definicoes_en, sinonimos = buscar_definicoes_sinonimos(synsets_en)
+        if not palavra:
+            return jsonify({"error": "Palavra não fornecida"}), 400
 
-        # Traduz para PT e DE via ILI
-        definicoes_pt = buscar_definicoes_traduzidas(synsets_en, w_pt)
-        definicoes_de = buscar_definicoes_traduzidas(synsets_en, w_de)
+        # Idiomas configurados
+        base_lang = app.config['BASE_LANGUAGE']
+        target_lang = app.config['TARGET_LANGUAGE']
+
+        # WordNets correspondentes
+        w_base = WORDNETS[base_lang]
+        w_target = WORDNETS[target_lang]
+
+        # Sinsets base
+        synsets_target = w_target.synsets(palavra)
+
+
+        if not synsets_target:
+            return jsonify({
+                "erro": "synsets_target estava vazio",
+                "palavra": palavra,
+                "definicoes_base": [],
+                "definicoes_target": [],
+                "sinonimos": []
+            })
+
+
+        # Definições e sinónimos na língua base
+        definicoes_base, sinonimos = buscar_definicoes_sinonimos(synsets_target)
+
+        # Definições e traduções no idioma alvo via ILI
+        definicoes_target, traducoes_target = buscar_definicoes_traduzidas(synsets_target, w_base,base_lang)
+
+
+
+        print("RETORNANDO JSON de DEFINIÇÕES:", {
+            "palavra": palavra,
+            "base_language": base_lang,
+            "target_language": target_lang,
+            "definicoes_base": definicoes_base,
+            "sinonimos": sinonimos,
+            "definicoes_target": definicoes_target,
+            "traducoes_target": traducoes_target
+        })
+
 
         return jsonify({
             "palavra": palavra,
-            "definicoes": definicoes_pt,
-            "definicoesEN": definicoes_en,
-            "definicoes_de": definicoes_de,
-            "sinonimos": list(set(sinonimos))
+            "base_language": base_lang,
+            "target_language": target_lang,
+            "definicoes_base": definicoes_base,
+            "sinonimos": sinonimos,
+            "definicoes_target": definicoes_target,
+            "traducoes_target": traducoes_target
         })
+
 
 
     @app.route("/ler", methods=["POST"])
@@ -107,8 +149,8 @@ def register_routes(app):
 
     @app.route("/parse_text", methods=["POST"])
     def parse_text():
-        print("FILES:", request.files)
-        print("FORM:", request.form)
+        # print("FILES:", request.files)
+        # print("FORM:", request.form)
 
         file = request.files.get("file")
 
@@ -119,38 +161,51 @@ def register_routes(app):
     
     @app.route("/search_On_Dict", methods=["POST"])
     def search_On_Dict():
-
         if not request.is_json:
             return {"error": "Request deve ser JSON"}, 400
 
         data = request.get_json()
 
-        palavra = data.get("palavra")
-        if not palavra:
-            return {"error": "Palavra não enviada"}, 400
+        # pega o objeto interno 'palavra'
+        palavra_obj = data.get('palavra', {})
+        traducoes = palavra_obj.get('traducoes_target', [])
 
+
+        print(palavra_obj)
+
+        if not traducoes:
+            return {"error": "Nenhuma tradução enviada"}, 400
 
         alias = app.config['SHORT_TARGET_ALIAS']
         if not alias:
             return {"error": "SHORT_TARGET_ALIAS não configurado"}, 500
 
-        #alias = f"'{alias}'"
 
         db_options = app.config['DATABASE_DICTIONARY_OPTIONS']
-        
-        print(db_options)
-        
         if alias not in db_options:
             return {"error": f"Alias '{alias}' inválido"}, 500
 
         db_path = db_options[alias][0]
 
-        print("Palavra:", palavra)
-        print("Alias:", alias)
-        print("DB:", db_path)
+        resultados = []
+        for palavra in traducoes:
+            palavra = palavra.strip()
+            if not palavra:
+                continue
+            print("Palavra:", palavra)
+            print("Alias:", alias)
+            print("DB:", db_path)
+            resultado = searchEntry("app/utils/" + db_path, alias, palavra)
+            resultados.append({palavra: resultado})
+        print(resultados)
 
-        print(os.getcwd())
+        print("RETORNANDO JSON DICIONARIO:", {
+            "palavra": palavra,
+            "RESULTADO": resultados
+        })
 
-        resultado = searchEntry("app/utils/" +db_path, alias, palavra)
 
-        return {"status": "ok", "resultado": resultado}
+        return jsonify({
+            "palavra": palavra,
+            "resultados":resultados
+        })

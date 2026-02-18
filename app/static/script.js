@@ -4,23 +4,30 @@ document.addEventListener("click", async (e) => {
   const palavra = e.target.innerText;
 
   try {
-    const [ortografia, definicao, dict_search] = await Promise.all([
-    verificarOrtografia(palavra),
-    verificarDefinicao(palavra),
-    buscarNoDicionario(palavra),
-    ler(palavra)
+
+    const [ortografia, definicao] = await Promise.all([
+      verificarOrtografia(palavra),
+      verificarDefinicao(palavra)
     ]);
 
+    ler(palavra);
 
-    escreverOrto(ortografia, ".Ortografia");
-    escreverDef(definicao, ".definition");
-    escreverdicionario(".dicionario")
+    escreverOrto(ortografia);
+    escreverDef(definicao);
+
+    console.log("DEFINICAO:", definicao);
+
+    const dict_search = await buscarNoDicionario(definicao);
+
+    console.log("DIC:", dict_search);
+
+    escreverdicionario(dict_search);
 
   } catch (err) {
-    //console.error("Erro:", err);
-    //return err.json()
+    console.error("Erro:", err);
   }
 });
+
 
 //--------------faz o fetch
 const buscarNoDicionario = async (palavra) => {
@@ -41,6 +48,7 @@ const verificarOrtografia = async (palavra) => {
     body: JSON.stringify({ palavra })
   });
 
+  console.log(resp)
   return resp.json();
 };
 
@@ -69,8 +77,9 @@ const ler = async (palavra) => {
 //------------ escreve os dados
 
 
-const escreverOrto = (data, container) => {
-  const div = document.querySelector(container);
+const escreverOrto = (data) => {
+  
+  const div = document.querySelector(".Ortografia");
   const status = div.querySelector(".Ortografia_status");
   const sugestoes = div.querySelector(".Ortografia_sugestoes");
 
@@ -90,24 +99,49 @@ const escreverOrto = (data, container) => {
 
 
 const escreverDef = (data) => {
-const div = document.querySelector(".definition"); // container
-const status = div.querySelector(".definition_status"); // classe
-const sugestoes = div.querySelector(".definition_sugestoes"); // classe
+  const div = document.querySelector(".definition");
+  const status = div.querySelector(".definition_status");
+  const sugestoes = div.querySelector(".definition_sugestoes");
 
-  console.log(data);
-
+  // Mostrar sinônimos
   if(data.sinonimos && data.sinonimos.length > 0){
     status.textContent = data.sinonimos.join(", ");
+  } else {
+    status.textContent = "";
   }
 
-  if(!data.definicoes || data.definicoes.every(d => d.trim() === "")){
-    sugestoes.textContent = data.definicoesEN.join(", ");
-  }else{
-    sugestoes.textContent = data.definicoes.join(", ");
+  // Mostrar definições
+  if(data.definicoes_base && data.definicoes_base.length > 0){
+    sugestoes.textContent = data.definicoes_base.join(", ");
+  } else if(data.definicoes_target && data.definicoes_target.length > 0){
+    sugestoes.textContent = data.definicoes_target.join(", ");
+  } else {
+    sugestoes.textContent = "Sem definições";
   }
 };
 
 
+const escreverdicionario = (data) => {
+
+  const div = document.querySelector(".translation");
+  const status = div.querySelector(".translation_status");
+  const sugestoes = div.querySelector(".translation_sugestoes");
+
+  if (!data.resultados || data.resultados.length === 0) {
+    status.textContent = "Nada encontrado";
+    sugestoes.textContent = "";
+    return;
+  }
+
+  status.textContent = "Dicionário:";
+
+  const textos = data.resultados.map(obj => {
+    const palavra = Object.keys(obj)[0];
+    return `${palavra}: ${obj[palavra]}`;
+  });
+
+  sugestoes.textContent = textos.join(" | ");
+};
 
 
 //--------------------------------------js da página
@@ -142,7 +176,7 @@ document.getElementById('fileInput').addEventListener('change', async (event) =>
   });
 
   const text = await resp.text();
-  console.log(text);
+  //console.log(text);
 });
 
 

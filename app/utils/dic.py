@@ -47,7 +47,7 @@ def searchEntry(name, langAbrev, wordToSearch):
     WHERE word = ? AND lang_code = ?
     """, (wordToSearch, langAbrev))
 
-    print(cur.fetchall())
+    #print(cur.fetchall())
 
 name = "en_dict.db"
 filepath = "de-extract.jsonl"
